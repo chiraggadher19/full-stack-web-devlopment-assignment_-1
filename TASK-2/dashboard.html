@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white p-5">
+            <h2 class="text-2xl font-bold mb-5">Dashboard</h2>
+            <nav>
+                <ul>
+                    <li class="mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10"></path></svg>
+                        <a href="#" class="hover:text-gray-300">Dashboard</a>
+                    </li>
+                    <li class="mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        <a href="#" class="hover:text-gray-300">Analytics</a>
+                    </li>
+                    <li class="mb-3 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A4.5 4.5 0 119 20.25h6a4.5 4.5 0 113.879-2.446"></path></svg>
+                        <a href="#" class="hover:text-gray-300">Users</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <!-- Navbar -->
+            <header class="flex justify-between bg-white p-4 shadow rounded">
+                <h1 class="text-xl font-bold">Dashboard Overview</h1>
+                <div>
+                    <input type="text" placeholder="Search..." class="border p-2 rounded">
+                    <button class="ml-2 bg-blue-500 text-white p-2 rounded">🔔</button>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <article class="bg-white p-5 shadow rounded flex items-center">
+                    <svg class="w-8 h-8 text-blue-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21V3m4 18v-4m-4 4H5m14-6h2m-2 0a2 2 0 100-4h-2a2 2 0 100 4z"></path></svg>
+                    <div>
+                        <h3 class="text-lg font-semibold">Total Sales</h3>
+                        <p class="text-2xl font-bold">$15,230</p>
+                    </div>
+                </article>
+                <article class="bg-white p-5 shadow rounded flex items-center">
+                    <svg class="w-8 h-8 text-green-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
+                    <div>
+                        <h3 class="text-lg font-semibold">Users</h3>
+                        <p class="text-2xl font-bold">1,250</p>
+                    </div>
+                </article>
+                <article class="bg-white p-5 shadow rounded flex items-center">
+                    <svg class="w-8 h-8 text-yellow-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"></path></svg>
+                    <div>
+                        <h3 class="text-lg font-semibold">Orders</h3>
+                        <p class="text-2xl font-bold">340</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 shadow rounded">
+                    <h2 class="text-lg font-bold mb-4">Revenue</h2>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="bg-white p-6 shadow rounded">
+                    <h2 class="text-lg font-bold mb-4">Order Time Distribution</h2>
+                    <canvas id="orderTimeChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Rating and Top Orders Section -->
+            <section class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 shadow rounded">
+                    <h2 class="text-lg font-bold mb-4">Your Rating</h2>
+                    <div class="flex items-center justify-around">
+                        <div class="text-center">
+                            <div class="text-4xl text-blue-500">85%</div>
+                            <p class="text-gray-500">Hygiene</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl text-green-500">92%</div>
+                            <p class="text-gray-500">Packaging</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl text-orange-500">85%</div>
+                            <p class="text-gray-500">Food Taste</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 shadow rounded col-span-2">
+                    <h2 class="text-lg font-bold mb-4">Most Ordered Food</h2>
+                    <ul>
+                        <li class="flex justify-between py-2 border-b">
+                            <span>Fresh Salad Bowl</span>
+                            <span>IDR 45.000</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b">
+                            <span>Chicken Noodles</span>
+                            <span>IDR 75.000</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b">
+                            <span>Smoothie Fruits</span>
+                            <span>IDR 45.000</span>
+                        </li>
+                        <li class="flex justify-between py-2">
+                            <span>Hot Chicken Wings</span>
+                            <span>IDR 45.000</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const orderTimeCtx = document.getElementById('orderTimeChart').getContext('2d');
+
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['01', '02', '03', '04', '05', '06'],
+                datasets: [
+                    {
+                        label: 'Last 6 days',
+                        data: [120, 150, 180, 100, 200, 170],
+                        backgroundColor: '#3b82f6'
+                    },
+                    {
+                        label: 'Last Week',
+                        data: [90, 110, 160, 80, 190, 140],
+                        backgroundColor: '#a5b4fc'
+                    }
+                ]
+            }
+        });
+
+        new Chart(orderTimeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Afternoon', 'Evening', 'Morning'],
+                datasets: [
+                    {
+                        data: [40, 32, 28],
+                        backgroundColor: ['#f59e0b', '#3b82f6', '#10b981']
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
